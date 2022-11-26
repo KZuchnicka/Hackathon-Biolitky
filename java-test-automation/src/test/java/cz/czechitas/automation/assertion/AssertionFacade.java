@@ -38,6 +38,11 @@ public final class AssertionFacade {
         assertThat(loggedInText.getText()).isEqualTo("MY ACCOUNT");
     }
 
+    public void overOdhlaseniUzivatele() {
+        var loggedoutText = elementFinder.findByXPath("//*[@id=\"header\"]/div[3]/div/div/div[7]/ul/li/a/span");
+        assertThat(loggedoutText.getText()).isEqualTo("Sign in");
+    }
+
     public void overExistenciDlazdiceProgramovani() {
         var programmingText = elementFinder.findByXPath("/html/body/div/div/div[1]/div/div/div[1]/div");
         assertThat(programmingText.getText()).isEqualTo("Programování");
