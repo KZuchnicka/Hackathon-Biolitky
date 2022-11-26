@@ -1,0 +1,69 @@
+package cz.czechitas.automation;
+
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
+
+/**
+ * Public menu selenium actions
+ *
+ * @author Jiri Koudelka
+ * @since 1.0.0
+ */
+@ParametersAreNonnullByDefault
+final class PublicMenuAction {
+
+    private final ElementFinder elementFinder;
+
+    PublicMenuAction(ElementFinder elementFinder)
+    {
+        this.elementFinder = Objects.requireNonNull(elementFinder);
+    }
+
+    void jdiDoSekceKontakt() {
+        var agreeButton = elementFinder.findByXPath("/html/body/div/header/nav/div/div[1]/a[2]");
+        agreeButton.click();
+    }
+
+    void jdiDoSekceNavodyAFormulareProUcitele() {
+        KlikniNaHamburgerMenu();
+        var menuItem = elementFinder.findByXPath("//*[@id=\"navbarSupportedContent\"]/div[1]/div[2]/div/a[1]");
+        menuItem.click();
+    }
+
+    /*void jdiDoSekceInterior() {
+       KlikniNaHamburgerMenu();
+        var interiorMenuItem = elementFinder.hashCode();
+    }*/
+
+    void jdiDoSekceNavodyAFormulareProRodice() {
+        clickOnForParentMenuItem();
+        var formMenuItem = elementFinder.findByXPath("//*[@id=\"navbarSupportedContent\"]/div[1]/div[1]/div/a[1]");
+        formMenuItem.click();
+    }
+
+    void jdiDoSekceVytvorPrihlasku() {
+        clickOnForParentMenuItem();
+        var createApplicationMenuItem = elementFinder.findByXPath("//*[@id=\"navbarSupportedContent\"]/div[1]/div[1]/div/a[2]");
+        createApplicationMenuItem.click();
+    }
+
+    void klikniNaMenu() {
+        var hamburgerMenuItem = elementFinder.findByXPath("//*[@id=\"header\"]/div[3]/div/div/div[2]/button");
+        hamburgerMenuItem.click();
+    }
+
+    void jdiDoSekcePrihlasky() {
+        var applicationsMenuItem = elementFinder.findByXPath("/html/body/div/header/nav/div/div[1]/a[2]");
+        applicationsMenuItem.click();
+    }
+
+    private void KlikniNaHamburgerMenu() {
+        var forHamburgerMenuItem = elementFinder.findByXPath("//*[@id=\"navbarSupportedContent\"]/div[1]/div[2]/a");
+        forHamburgerMenuItem.click();
+    }
+
+    private void clickOnForParentMenuItem() {
+        var forParentMenuItem = elementFinder.findByXPath("//*[@id=\"navbarSupportedContent\"]/div[1]/div[1]/a");
+        forParentMenuItem.click();
+    }
+}
